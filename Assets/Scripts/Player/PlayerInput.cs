@@ -8,6 +8,7 @@ public class PlayerInput : MonoBehaviour
     InputActions inputActions;
     void Awake()
     {
+        Debug.Log("AWAKE TOIMII");
         inputActions = new InputActions();
         playerMove = GetComponent<PlayerMove>();
         
