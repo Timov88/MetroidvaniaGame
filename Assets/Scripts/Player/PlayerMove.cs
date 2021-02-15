@@ -15,4 +15,9 @@ public class PlayerMove : MonoBehaviour
     {
         
     }
+
+    public void Jump()
+    {
+        Debug.Log("Jump");
+    }
 }

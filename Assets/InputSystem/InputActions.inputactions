@@ -1,0 +1,63 @@
+{
+    "name": "InputActions",
+    "maps": [
+        {
+            "name": "Inputs",
+            "id": "41902c48-2e54-4c73-b3a6-b9e5d9fdcad9",
+            "actions": [
+                {
+                    "name": "Axis",
+                    "type": "Value",
+                    "id": "8c5f0e27-6f56-46f9-8e12-03c5444914c4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "51b52acd-7024-46a3-b756-ea4d797a3300",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c4846d64-538a-4a8b-b7d0-3bea0bd20773",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Axis",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "94eaf6b2-436d-49a5-8020-0c75f59429c5",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7fd35a9b-df47-4989-b980-203f655be150",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
