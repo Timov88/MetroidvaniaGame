@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Jussi/JussinMenu.unity
     guid: 53d3bbebf18b30f4687b89b95895b36f
   - enabled: 1
-    path: Assets/Scenes/Jussi/TestiScene.unity
-    guid: 49ca2ed516fc8b34bbc8a3a1b1030ec1
+    path: Assets/Scenes/Santi/SantinScene.unity
+    guid: f4f70953b7c211748849dc7dc0400ca7
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 2b100d5f2025c294b81fe1ee6255dc74, type: 2}
