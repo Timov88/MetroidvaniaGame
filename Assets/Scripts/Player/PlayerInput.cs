@@ -5,54 +5,42 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    //PlayerMove playerMove;
-    //InputActions inputActions;
     private InputActions controls;
     private float triggerValue;
     public Vector2 movement;
+    PlayerMovement playerMovement;
 
     void Awake()
     {
-        //inputActions = new InputActions();
-        //playerMove = GetComponent<PlayerMove>();
         controls = new InputActions();
-        
-        //controls.Inputs.Jump.performed += ctx => Jump();
-        //inputActions.Inputs.Jump.canceled += ctx => JumpCanceled();
-
-        controls.Inputs.Jump.performed += context => triggerValue = context.ReadValue<float>();
-        controls.Inputs.Jump.canceled += context => triggerValue = 0f;
-        controls.Inputs.Jump.started += context => Jump();
-        controls.Inputs.Jump.canceled += context => JumpOff();
-
+        controls.Player.Jump.started += context => Jump();
+        controls.Player.MoveKeyboard.started += context => MoveKeyboard();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         Debug.Log("asdasd");
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        //Debug.Log("Kulli Value: " + triggerValue);
-        Vector2 axisInput = controls.Inputs.Axis.ReadValue<Vector2>();
+        Vector2 axisInput = controls.Player.Move.ReadValue<Vector2>();
         movement = new Vector2 { x = axisInput.x, y = axisInput.y };
-        movement.Normalize();
-        Debug.Log("ISO" + axisInput);
+        playerMovement.Movement(movement);
+
         Debug.Log(movement);
+        //movement.Normalize();
     }
 
     private void Jump()
     {
-        Debug.Log("Kulli ON");
-        //playerMove.Jump();
+        playerMovement.Jump();
     }
 
-    private void JumpOff()
+    private void MoveKeyboard()
     {
-        Debug.Log("Kulli OFF");
+        playerMovement.MoveKeyboard();
     }
 
     void OnEnable() {
