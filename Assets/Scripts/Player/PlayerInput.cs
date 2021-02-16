@@ -2,39 +2,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerInput : MonoBehaviour
 {
-    PlayerMove playerMove;
-    InputActions inputActions;
+    private InputActions controls;
+    private float triggerValue;
+    public Vector2 movement;
+    PlayerMovement playerMovement;
+
     void Awake()
     {
-        inputActions = new InputActions();
-        playerMove = GetComponent<PlayerMove>();
-        
-        inputActions.Inputs.Jump.performed += ctx => Jump();
-        //inputActions.Inputs.Jump.canceled += ctx => JumpCanceled();
-
+        controls = new InputActions();
+        controls.Player.Jump.started += context => Jump();
+        controls.Player.MoveKeyboard.started += context => MoveKeyboard();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         Debug.Log("asdasd");
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        Vector2 axisInput = inputActions.Inputs.Axis.ReadValue<Vector2>();
-        Vector2 movement = new Vector2 { x = axisInput.x, y = axisInput.y };
-        movement.Normalize();
+        Vector2 axisInput = controls.Player.Move.ReadValue<Vector2>();
+        movement = new Vector2 { x = axisInput.x, y = axisInput.y };
+        playerMovement.Movement(movement);
+
+        Debug.Log(movement);
+        //movement.Normalize();
     }
 
-    void Jump()
+    private void Jump()
     {
-        Debug.Log("asdasd");
-        playerMove.Jump();
+        playerMovement.Jump();
     }
 
+    private void MoveKeyboard()
+    {
+        playerMovement.MoveKeyboard();
+    }
+
+    void OnEnable() {
+        controls.Enable();
+    }
+
+     void OnDisable() {
+        controls.Disable();
+    }
 
 }

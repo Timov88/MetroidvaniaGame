@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
+    Rigidbody2D rb;
+    Transform player;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
+        player = GameObject.Find("Player").transform;
     }
 
     // Update is called once per frame
@@ -16,8 +19,8 @@ public class PlayerMove : MonoBehaviour
         
     }
 
-    public void Jump()
+    private void FixedUpdate()
     {
-        Debug.Log("Jump");
+
     }
 }
