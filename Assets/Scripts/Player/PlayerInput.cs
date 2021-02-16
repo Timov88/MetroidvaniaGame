@@ -9,6 +9,7 @@ public class PlayerInput : MonoBehaviour
     //InputActions inputActions;
     private InputActions controls;
     private float triggerValue;
+    public Vector2 movement;
 
     void Awake()
     {
@@ -37,7 +38,7 @@ public class PlayerInput : MonoBehaviour
     {
         //Debug.Log("Kulli Value: " + triggerValue);
         Vector2 axisInput = controls.Inputs.Axis.ReadValue<Vector2>();
-        Vector2 movement = new Vector2 { x = axisInput.x, y = axisInput.y };
+        movement = new Vector2 { x = axisInput.x, y = axisInput.y };
         movement.Normalize();
         Debug.Log("ISO" + axisInput);
         Debug.Log(movement);
