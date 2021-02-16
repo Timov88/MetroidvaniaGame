@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
         player = GameObject.Find("Player").transform;
     }
 
-    public void Flip()
+    public void LookAtPlayer()
     {
         if (player.position.x > transform.position.x && !facingRight || player.position.x < transform.position.x && facingRight)
         {
