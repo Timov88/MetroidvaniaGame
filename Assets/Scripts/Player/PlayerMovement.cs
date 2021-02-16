@@ -22,6 +22,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Movement()
     {
-        rb.velocity = new Vector2(playerInput.movement.x, rb.velocity.y);
+        rb.velocity = new Vector2(playerInput.movement.x*10, rb.velocity.y);
     }
 }
