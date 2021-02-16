@@ -7,7 +7,7 @@ public class EnemyRun : StateMachineBehaviour
     Transform player;
     Rigidbody2D rb;
     Enemy enemy;
-    float attackRange = 2f;
+    float attackRange = 1.7f;
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
