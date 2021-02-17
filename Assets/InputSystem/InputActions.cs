@@ -169,11 +169,11 @@ public class @InputActions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""MoveKeyboard"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""9d10ec93-0acc-4350-acb5-b762c331267e"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": ""NormalizeVector2"",
+                    ""interactions"": ""Hold""
                 }
             ],
             ""bindings"": [
