@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     Transform player;
     SpriteRenderer sr;
     bool facingRight = false;
+    [SerializeField] GameObject weapon;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,10 @@ public class Enemy : MonoBehaviour
         }    
     }
 
+    public void Attack(bool trueOrFalse)
+    {
+        weapon.SetActive(trueOrFalse);
+    }
     // Update is called once per frame
     void Update()
     {

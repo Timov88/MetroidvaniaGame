@@ -7,7 +7,8 @@ public class EnemyRun : StateMachineBehaviour
     Transform player;
     Rigidbody2D rb;
     Enemy enemy;
-    float attackRange = 1.7f;
+    float attackRange = 1f;
+    
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -27,6 +28,7 @@ public class EnemyRun : StateMachineBehaviour
         if(Vector2.Distance(player.position, rb.position) <= attackRange)
         {
             animator.SetTrigger("Attack");
+            enemy.Attack(true);
         }
     }
 
@@ -34,5 +36,6 @@ public class EnemyRun : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.ResetTrigger("Attack");
+        enemy.Attack(false);
     }
 }
