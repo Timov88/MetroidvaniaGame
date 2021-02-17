@@ -29,7 +29,7 @@ public class PlayerInput : MonoBehaviour
         movement = new Vector2 { x = axisInput.x, y = axisInput.y };
         playerMovement.Movement(movement);
 
-        Debug.Log(movement);
+        //Debug.Log(movement);
         //movement.Normalize();
     }
 
