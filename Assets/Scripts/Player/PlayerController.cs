@@ -11,11 +11,15 @@ public class PlayerController : MonoBehaviour
         [SerializeField]LayerMask platformLayerMask;
         private float horizontal;
         private float vertical;
+        bool facingRight = false;
 
         void Start() 
         {
             rb = GetComponent<Rigidbody2D>();
             boxCollider2D = GetComponent<BoxCollider2D>();
+
+            //facingRight = !facingRight;
+           // transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
         }
 
         void FixedUpdate() 
@@ -31,6 +35,21 @@ public class PlayerController : MonoBehaviour
         {
             this.horizontal = horizontal;
             this.vertical = vertical;
+
+           // facingRight = !facingRight;
+           if(horizontal < 0 && !facingRight || horizontal > 0 && facingRight)
+           {
+                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+                facingRight = !facingRight;
+                Debug.Log("FASELEFT");
+           }
+           /*if(horizontal > 0 && facingRight)
+           {
+               transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+               facingRight = false;
+               Debug.Log("FASERIGHT");
+           }*/
+
             Debug.Log($"{horizontal},{vertical}");
         }
 
