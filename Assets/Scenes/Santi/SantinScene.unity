@@ -484,6 +484,7 @@ MonoBehaviour:
   platformLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  jumpAudio: {fileID: 0}
 --- !u!95 &6289981508931367449
 Animator:
   serializedVersion: 3
@@ -624,6 +625,22 @@ PrefabInstance:
     - target: {fileID: 7050802075423355592, guid: 7015d911a0e73ce48b05769a68ac6e5d, type: 3}
       propertyPath: platformLayerMask.m_Bits
       value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 7050802075423355593, guid: 7015d911a0e73ce48b05769a68ac6e5d, type: 3}
+      propertyPath: m_Size.x
+      value: 0.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 7050802075423355593, guid: 7015d911a0e73ce48b05769a68ac6e5d, type: 3}
+      propertyPath: m_Size.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7050802075423355593, guid: 7015d911a0e73ce48b05769a68ac6e5d, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 7050802075423355593, guid: 7015d911a0e73ce48b05769a68ac6e5d, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.03
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7015d911a0e73ce48b05769a68ac6e5d, type: 3}

@@ -9,9 +9,10 @@ public class PlayerController : MonoBehaviour
         [SerializeField]float movementSpeed;
         [SerializeField]float jumpSpeed;
         [SerializeField]LayerMask platformLayerMask;
+        [SerializeField]AudioSource jumpAudio;
         private float horizontal;
         private float vertical;
-        bool facingRight = false;
+        bool facingRight = false; 
 
         void Start() 
         {
@@ -36,20 +37,11 @@ public class PlayerController : MonoBehaviour
             this.horizontal = horizontal;
             this.vertical = vertical;
 
-           // facingRight = !facingRight;
            if(horizontal < 0 && !facingRight || horizontal > 0 && facingRight)
            {
                 transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
                 facingRight = !facingRight;
-                Debug.Log("FASELEFT");
            }
-           /*if(horizontal > 0 && facingRight)
-           {
-               transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-               facingRight = false;
-               Debug.Log("FASERIGHT");
-           }*/
-
             Debug.Log($"{horizontal},{vertical}");
         }
 
@@ -57,6 +49,8 @@ public class PlayerController : MonoBehaviour
         {
             if (IsGrounded())
             {
+                Debug.Log("SOITA AUDIO");
+                //jumpAudio.Play();
                 rb.AddForce(Vector2.up*jumpSpeed, ForceMode2D.Impulse);
             }
         }
@@ -64,8 +58,6 @@ public class PlayerController : MonoBehaviour
         private bool IsGrounded() 
         {
             RaycastHit2D hit = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f, Vector2.down, 0.05f, platformLayerMask);
-            //Debug.DrawRay(boxCollider2D.bounds.center, Vector2.down * (boxCollider2D.bounds.extents.y + 0.05f), Color.red);
-            //Debug.Log("KULLI Grounded");
             return hit.collider != null;
         }
 }
