@@ -4,31 +4,34 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-        Rigidbody2D rb;
-        BoxCollider2D boxCollider2D;
-        [SerializeField]float movementSpeed;
-        [SerializeField]float jumpSpeed;
-        [SerializeField]LayerMask platformLayerMask;
-        [SerializeField]AudioSource jumpAudio;
-        private float horizontal;
-        private float vertical;
-        bool facingRight = false; 
+    Rigidbody2D rb;
+    BoxCollider2D boxCollider2D;
+    [SerializeField]float movementSpeed;
+    [SerializeField]float jumpSpeed;
+    [SerializeField]LayerMask platformLayerMask;
+    [SerializeField]AudioSource jumpAudio;
+    private float horizontal;
+    private float vertical;
+    bool facingRight = false;
+    Animator anim;
 
-        void Start() 
+    void Start() 
         {
             rb = GetComponent<Rigidbody2D>();
             boxCollider2D = GetComponent<BoxCollider2D>();
-
-            //facingRight = !facingRight;
-           // transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-        }
+            anim = GetComponent<Animator>();
+        //facingRight = !facingRight;
+        // transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+    }
 
         void FixedUpdate() 
         {
             IsGrounded();
             rb.velocity = new Vector2(horizontal*movementSpeed, rb.velocity.y);
-            //If you change fixed update use Time.deltaTime so your movement speed is not gonna get cucked
-            //rb.velocity = new Vector2(horizontal*movementSpeed*(Time.deltaTime*100), rb.velocity.y);
+            anim.SetFloat("Run", Mathf.Abs(horizontal));
+            anim.speed = Mathf.Abs(horizontal);
+        //If you change fixed update use Time.deltaTime so your movement speed is not gonna get cucked
+        //rb.velocity = new Vector2(horizontal*movementSpeed*(Time.deltaTime*100), rb.velocity.y);
         }
 
        
@@ -42,7 +45,7 @@ public class PlayerController : MonoBehaviour
                 transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
                 facingRight = !facingRight;
            }
-            Debug.Log($"{horizontal},{vertical}");
+            //Debug.Log($"{horizontal},{vertical}");
         }
 
         public void OnJumpInput(bool jumpInput)

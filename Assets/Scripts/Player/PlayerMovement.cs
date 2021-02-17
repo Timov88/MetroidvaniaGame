@@ -10,12 +10,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]float movementSpeed;
     [SerializeField]float jumpSpeed;
     [SerializeField]LayerMask platformLayerMask;
+    
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
-        boxCollider2D = GetComponent<BoxCollider2D>();	
+        boxCollider2D = GetComponent<BoxCollider2D>();
+        
     }
 
     void Update()
@@ -26,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public void Movement(Vector2 asd)
     {
         rb.velocity = new Vector2(playerInput.movement.x*movementSpeed, rb.velocity.y);
+        //Debug.Log(playerInput.movement.x);
     }
 
     public void MoveKeyboard()
