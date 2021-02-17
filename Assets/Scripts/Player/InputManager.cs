@@ -12,9 +12,8 @@ public class InputEventBool : UnityEvent<bool> { }
 public sealed class InputManager : MonoBehaviour
 {
     private InputActions inputActions;
-    //public InputEventBool crouchInputEvent;
+    public InputEventBool jumpInputEvent;
     public InputEventVector2 moveInputEvent;
-    //public InputEventBool runInputEvent;
 
     private void Awake()
     {
@@ -26,7 +25,7 @@ public sealed class InputManager : MonoBehaviour
         inputActions.Player.Enable();
         inputActions.Player.Movement.performed += OnMove;
         inputActions.Player.Movement.canceled += OnMove;
-        //controls.Gameplay.Crouch.canceled += OnCrouch;
+        inputActions.Player.Jump.performed += OnJump;
     }
 
     private void OnMove(InputAction.CallbackContext context)
@@ -38,5 +37,13 @@ public sealed class InputManager : MonoBehaviour
         //movement = new Vector2 (axisInput.x, axisInput.y);
         //playerMovement.Movement(movement);
         //Debug.Log($"Move Input: {moveInput}");
+    }
+
+    
+    private void OnJump(InputAction.CallbackContext context)
+    {
+        bool jumpInput = context.ReadValueAsButton();
+        jumpInputEvent.Invoke(jumpInput);
+        //Debug.Log("KULLI");
     }
 }

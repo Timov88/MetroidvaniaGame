@@ -137,7 +137,7 @@ public class @InputActions : IInputActionCollection, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Jump"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""e73af631-8a85-434a-9db1-69c928124c43"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
