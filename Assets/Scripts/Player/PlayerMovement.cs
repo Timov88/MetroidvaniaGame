@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]float jumpSpeed;
     [SerializeField]LayerMask platformLayerMask;
     
+    
 
     void Start()
     {
@@ -40,9 +41,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (IsGrounded())
         {
+            
             rb.AddForce(Vector2.up*jumpSpeed, ForceMode2D.Impulse);
         }
     }
+
+
 
     private bool IsGrounded() 
     {

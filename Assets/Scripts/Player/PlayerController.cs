@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]float jumpSpeed;
     [SerializeField]float dashSpeed;
     [SerializeField]float dashTime;
+    [SerializeField]Transform bullet;
     [SerializeField]LayerMask platformLayerMask;
     [SerializeField]AudioSource jumpAudio;
     private float horizontal;
@@ -19,6 +20,8 @@ public class PlayerController : MonoBehaviour
     bool dashing = false;
     Animator anim;
     IEnumerator dash;
+    AudioController audio;
+    
 
     void Start() 
         {
@@ -26,7 +29,8 @@ public class PlayerController : MonoBehaviour
             boxCollider2D = GetComponent<BoxCollider2D>();
             anim = GetComponent<Animator>();
             dashTrail = GetComponent<DashTrail>();
-        }
+            audio = GetComponentInChildren<AudioController>();
+    }
 
         void FixedUpdate() 
         {
@@ -59,8 +63,9 @@ public class PlayerController : MonoBehaviour
         {
             if (IsGrounded())
             {
+                audio.PlayjumpSound();
                 Debug.Log("SOITA AUDIO");
-                //jumpAudio.Play();
+                //jumpAudio.Play();//
                 rb.AddForce(Vector2.up*jumpSpeed, ForceMode2D.Impulse);
             }
         }
@@ -69,6 +74,11 @@ public class PlayerController : MonoBehaviour
         {
             dash = Dash();
             StartCoroutine(dash);
+        }
+
+        public void OnShootInput(bool shootInput)
+        {
+            Instantiate(bullet, new Vector2(1,1), Quaternion.identity);
         }
 
         private bool IsGrounded() 

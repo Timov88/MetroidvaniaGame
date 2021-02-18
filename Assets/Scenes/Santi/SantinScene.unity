@@ -373,6 +373,68 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &928961366
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6150940666310963048, guid: 2c4d8acf918aac044bd3e25f86c06770, type: 3}
+      propertyPath: m_Name
+      value: Bullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150940666310963053, guid: 2c4d8acf918aac044bd3e25f86c06770, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150940666310963053, guid: 2c4d8acf918aac044bd3e25f86c06770, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150940666310963053, guid: 2c4d8acf918aac044bd3e25f86c06770, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.1437
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150940666310963053, guid: 2c4d8acf918aac044bd3e25f86c06770, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150940666310963053, guid: 2c4d8acf918aac044bd3e25f86c06770, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150940666310963053, guid: 2c4d8acf918aac044bd3e25f86c06770, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150940666310963053, guid: 2c4d8acf918aac044bd3e25f86c06770, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150940666310963053, guid: 2c4d8acf918aac044bd3e25f86c06770, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150940666310963053, guid: 2c4d8acf918aac044bd3e25f86c06770, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150940666310963053, guid: 2c4d8acf918aac044bd3e25f86c06770, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150940666310963053, guid: 2c4d8acf918aac044bd3e25f86c06770, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2c4d8acf918aac044bd3e25f86c06770, type: 3}
+--- !u!4 &1366470544 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6150940666310963053, guid: 2c4d8acf918aac044bd3e25f86c06770, type: 3}
+  m_PrefabInstance: {fileID: 928961366}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1800548671 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7050802075423355575, guid: 7015d911a0e73ce48b05769a68ac6e5d, type: 3}
@@ -448,6 +510,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  shootInputEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1800548672}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnShootInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   moveInputEvent:
     m_PersistentCalls:
       m_Calls:
@@ -498,7 +575,7 @@ MonoBehaviour:
   jumpSpeed: 5
   dashSpeed: 0
   dashTime: 0
-  setDashTime: 0
+  bullet: {fileID: 0}
   platformLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -640,6 +717,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7050802075423355592, guid: 7015d911a0e73ce48b05769a68ac6e5d, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1366470544}
     - target: {fileID: 7050802075423355592, guid: 7015d911a0e73ce48b05769a68ac6e5d, type: 3}
       propertyPath: dashTime
       value: 0.2
