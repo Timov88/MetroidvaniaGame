@@ -182,6 +182,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerSounds
       objectReference: {fileID: 0}
+    - target: {fileID: 7623631660651084294, guid: 61f0417205a35e348a91e5bbc522047f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7623631660651084410, guid: 61f0417205a35e348a91e5bbc522047f, type: 3}
+      propertyPath: jumpAudio
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61f0417205a35e348a91e5bbc522047f, type: 3}
 --- !u!1 &200017789
