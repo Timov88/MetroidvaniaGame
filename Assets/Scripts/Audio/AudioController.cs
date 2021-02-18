@@ -9,6 +9,8 @@ public class AudioController : MonoBehaviour
     public AudioSource attackGunSound;
     public AudioSource hurtSound;
     public AudioSource deathSound;
+    public AudioSource parrySound;
+    public AudioSource dashSound;
 
     public void PlayjumpSound()
     {
@@ -30,5 +32,13 @@ public class AudioController : MonoBehaviour
     public void PlaydeathSound()
     {
         deathSound.Play();
+    }
+    public void PlayparrySound()
+    {
+        parrySound.Play();
+    }
+    public void PlaydashSound()
+    {
+        dashSound.Play();
     }
 }
