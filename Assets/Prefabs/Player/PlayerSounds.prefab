@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7623631660651084411}
   - component: {fileID: 7623631660651084410}
   - component: {fileID: 1800548675}
+  - component: {fileID: 1966238960}
   m_Layer: 0
   m_Name: PlayerSounds
   m_TagString: Player
@@ -187,6 +188,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08707b9b186a8cd48b2015e82d173e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!81 &1966238960
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7623631660651084294}
+  m_Enabled: 0
 --- !u!1 &7623631661544336929
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,8 +265,8 @@ AudioSource:
   m_GameObject: {fileID: 7623631661544336929}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 2660586796337157458, guid: dfc9f9919c32eeb41bee97b975602c55, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 2b01908bc56b1054e9e6e5c891b75206, type: 3}
+  OutputAudioMixerGroup: {fileID: 2387939191767535960, guid: dfc9f9919c32eeb41bee97b975602c55, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 9cfafd2e32d377044b90ce85bb78ebcc, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
