@@ -11,12 +11,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]float jumpSpeed;
     [SerializeField]LayerMask platformLayerMask;
     
+    
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
-        boxCollider2D = GetComponent<BoxCollider2D>(); 
+        boxCollider2D = GetComponent<BoxCollider2D>();
+        
     }
 
     void Update()
@@ -39,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (IsGrounded())
         {
+            
             rb.AddForce(Vector2.up*jumpSpeed, ForceMode2D.Impulse);
         }
     }

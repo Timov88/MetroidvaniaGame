@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     bool dashing = false;
     Animator anim;
     IEnumerator dash;
+    AudioController audio;
+    
 
     void Start() 
         {
@@ -27,7 +29,8 @@ public class PlayerController : MonoBehaviour
             boxCollider2D = GetComponent<BoxCollider2D>();
             anim = GetComponent<Animator>();
             dashTrail = GetComponent<DashTrail>();
-        }
+            audio = GetComponentInChildren<AudioController>();
+    }
 
         void FixedUpdate() 
         {
@@ -60,6 +63,7 @@ public class PlayerController : MonoBehaviour
         {
             if (IsGrounded())
             {
+                audio.PlayjumpSound();
                 Debug.Log("SOITA AUDIO");
                 //jumpAudio.Play();
                 rb.AddForce(Vector2.up*jumpSpeed, ForceMode2D.Impulse);
