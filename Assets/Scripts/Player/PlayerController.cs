@@ -8,11 +8,15 @@ public class PlayerController : MonoBehaviour
     BoxCollider2D boxCollider2D;
     [SerializeField]float movementSpeed;
     [SerializeField]float jumpSpeed;
+    [SerializeField]float dashSpeed;
+    [SerializeField]float dashTime;
+    [SerializeField]float setDashTime;
     [SerializeField]LayerMask platformLayerMask;
     [SerializeField]AudioSource jumpAudio;
     private float horizontal;
     private float vertical;
     bool facingRight = false;
+    bool dashing = false;
     Animator anim;
 
     void Start() 
@@ -20,18 +24,36 @@ public class PlayerController : MonoBehaviour
             rb = GetComponent<Rigidbody2D>();
             boxCollider2D = GetComponent<BoxCollider2D>();
             anim = GetComponent<Animator>();
-        //facingRight = !facingRight;
-        // transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-    }
+        }
 
         void FixedUpdate() 
         {
             IsGrounded();
             rb.velocity = new Vector2(horizontal*movementSpeed, rb.velocity.y);
+            //If you change fixed update use Time.deltaTime so your movement speed is not gonna get cucked
+            //rb.velocity = new Vector2(horizontal*movementSpeed*(Time.deltaTime*100), rb.velocity.y);
             anim.SetFloat("Run", Mathf.Abs(horizontal));
             anim.speed = Mathf.Abs(horizontal);
-        //If you change fixed update use Time.deltaTime so your movement speed is not gonna get cucked
-        //rb.velocity = new Vector2(horizontal*movementSpeed*(Time.deltaTime*100), rb.velocity.y);
+
+            if  (dashing && dashTime > 0)
+            {
+                //rb.velocity = Vector2.right * dashSpeed;
+                if(horizontal < 0 || facingRight)
+                {
+                        rb.AddForce(Vector2.left*dashSpeed, ForceMode2D.Impulse);
+                        dashTime -= Time.deltaTime;
+                } 
+                else if (horizontal > 0 || !facingRight)
+                {
+                        rb.AddForce(Vector2.right*dashSpeed, ForceMode2D.Impulse);
+                        dashTime -= Time.deltaTime;
+                }
+                if (dashTime < 0)
+                {
+                    dashing = false;
+                    dashTime = setDashTime;
+                }
+            }
         }
 
        
@@ -56,6 +78,11 @@ public class PlayerController : MonoBehaviour
                 //jumpAudio.Play();
                 rb.AddForce(Vector2.up*jumpSpeed, ForceMode2D.Impulse);
             }
+        }
+
+        public void OnDashInput(bool dashInput)
+        {
+            dashing = true;
         }
 
         private bool IsGrounded() 

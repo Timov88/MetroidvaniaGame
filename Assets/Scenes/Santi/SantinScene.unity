@@ -433,6 +433,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  dashInputEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1800548672}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnDashInput
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   moveInputEvent:
     m_PersistentCalls:
       m_Calls:
@@ -481,6 +496,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 5
   jumpSpeed: 5
+  dashSpeed: 0
+  dashTime: 0
+  setDashTime: 0
   platformLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -621,6 +639,18 @@ PrefabInstance:
     - target: {fileID: 7050802075423355575, guid: 7015d911a0e73ce48b05769a68ac6e5d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7050802075423355592, guid: 7015d911a0e73ce48b05769a68ac6e5d, type: 3}
+      propertyPath: dashTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7050802075423355592, guid: 7015d911a0e73ce48b05769a68ac6e5d, type: 3}
+      propertyPath: dashSpeed
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7050802075423355592, guid: 7015d911a0e73ce48b05769a68ac6e5d, type: 3}
+      propertyPath: setDashTime
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7050802075423355592, guid: 7015d911a0e73ce48b05769a68ac6e5d, type: 3}
       propertyPath: platformLayerMask.m_Bits

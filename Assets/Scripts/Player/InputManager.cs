@@ -13,6 +13,7 @@ public sealed class InputManager : MonoBehaviour
 {
     private InputActions inputActions;
     public InputEventBool jumpInputEvent;
+    public InputEventBool dashInputEvent;
     public InputEventVector2 moveInputEvent;
 
     private void Awake()
@@ -26,6 +27,7 @@ public sealed class InputManager : MonoBehaviour
         inputActions.Player.Movement.performed += OnMove;
         inputActions.Player.Movement.canceled += OnMove;
         inputActions.Player.Jump.performed += OnJump;
+        inputActions.Player.Dash.performed += OnDash;
     }
 
     private void OnMove(InputAction.CallbackContext context)
@@ -45,5 +47,11 @@ public sealed class InputManager : MonoBehaviour
         bool jumpInput = context.ReadValueAsButton();
         jumpInputEvent.Invoke(jumpInput);
         //Debug.Log("KULLI");
+    }
+
+    private void OnDash(InputAction.CallbackContext context)
+    {
+        bool dashInput = context.ReadValueAsButton();
+        dashInputEvent.Invoke(dashInput);
     }
 }
