@@ -4,31 +4,48 @@ using UnityEngine;
 
 public class AudioController : MonoBehaviour
 { 
-    public AudioSource jumpSound;
-    public AudioSource attackswordSound;
-    public AudioSource attackGunSound;
-    public AudioSource hurtSound;
-    public AudioSource deathSound;
+    public AudioSource JumpSound;
+    public AudioSource AttackswordSound;
+    public AudioSource AttackGunSound;
+    public AudioSource HurtSound;
+    public AudioSource DeathSound;
+    public AudioSource ParrySound;
+    public AudioSource DashSound;
+    public AudioSource MoveGrassSound;
 
-    public void PlayjumpSound()
+    public void PlayJumpSound()
     {
-        jumpSound.Play();
+        JumpSound.Play();
     }
 
-    public void PlayattackswordSound()
+    public void PlayAttackSwordSound()
     {
-        attackswordSound.Play();
+        AttackswordSound.Play();
     }
-    public void PlayattackGunSound()
+    public void PlayAttackGunSound()
     {
-        attackGunSound.Play();
+        AttackGunSound.Play();
     }
-    public void PlayhurtSound()
+    public void PlayHurtSound()
     {
-        hurtSound.Play();
+        HurtSound.Play();
     }
-    public void PlaydeathSound()
+    public void PlayDeathSound()
     {
-        deathSound.Play();
+        DeathSound.Play();
     }
+    public void PlayParrySound()
+    {
+        ParrySound.Play();
+    }
+    public void PlayDashSound()
+    {
+        DashSound.Play();
+    }
+    public void PlayMoveGrassSound()
+    {
+        Debug.Log("hölöhölö");
+        MoveGrassSound.Play();
+    }
+
 }

@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: bc3cb27c14badaa449ea7eccedcf0c16
+guid: 089b6fd310d3bf649bcd604b437fc215
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3906637749126182337
-    second: TempTile_0
-  - first:
-      213: -2438007858990955650
-    second: TempTile_1
-  - first:
-      213: 2692180036210720578
-    second: TempTile_2
+      213: -8559077863365637872
+    second: MenuBg_Dark
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -96,80 +90,26 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TempTile_0
+      name: MenuBg_Dark
       rect:
         serializedVersion: 2
         x: 0
-        y: 76
-        width: 24
-        height: 24
+        y: 0
+        width: 71
+        height: 71
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 24, y: 24, z: 24, w: 24}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3ac3395aa5d8c9c0800000000000000
-      internalID: -3906637749126182337
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TempTile_1
-      rect:
-        serializedVersion: 2
-        x: 25
-        y: 76
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e73cb35f4c47a2ed0800000000000000
-      internalID: -2438007858990955650
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TempTile_2
-      rect:
-        serializedVersion: 2
-        x: 50
-        y: 76
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 24ffcb9aa7b8c5520800000000000000
-      internalID: 2692180036210720578
+      spriteID: 0198e2df70c083980800000000000000
+      internalID: -8559077863365637872
       vertices: []
       indices: 
       edges: []
