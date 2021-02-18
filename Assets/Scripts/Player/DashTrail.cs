@@ -11,12 +11,14 @@ public class DashTrail : MonoBehaviour
         SpriteRenderer trailPartRenderer = trailPart.AddComponent<SpriteRenderer>();
         trailPartRenderer.sprite = GetComponent<SpriteRenderer>().sprite;
         trailPart.transform.position = transform.position;
-        trailPart.transform.localScale = transform.parent.transform.localScale;
+        //if child object use
+        //trailPart.transform.localScale = transform.parent.transform.localScale;
+        trailPart.transform.localScale = transform.transform.localScale;
         trailParts.Add(trailPart);
         
 
         StartCoroutine(FadeTrailPart(trailPartRenderer));
-        Destroy(trailPart, 0.08f); // replace 0.5f with needed lifeTime
+        Destroy(trailPart, 0.3f); // replace 0.5f with needed lifeTime
     }
 
     IEnumerator FadeTrailPart(SpriteRenderer trailPartRenderer)
@@ -24,8 +26,8 @@ public class DashTrail : MonoBehaviour
         
         Color color = trailPartRenderer.color;
         color.a -= 0.5f;
-        color.r -= 0.3f;
-        color.g -= 0.3f;// replace 0.5f with needed alpha decrement
+        color.r -= 0.2f;
+        color.g -= 0.4f;// replace 0.5f with needed alpha decrement
         trailPartRenderer.color = color;
 
         yield return new WaitForEndOfFrame();

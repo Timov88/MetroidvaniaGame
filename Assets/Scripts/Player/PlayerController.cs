@@ -6,11 +6,11 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
     BoxCollider2D boxCollider2D;
+    DashTrail dashTrail;
     [SerializeField]float movementSpeed;
     [SerializeField]float jumpSpeed;
     [SerializeField]float dashSpeed;
     [SerializeField]float dashTime;
-    [SerializeField]float setDashTime;
     [SerializeField]LayerMask platformLayerMask;
     [SerializeField]AudioSource jumpAudio;
     private float horizontal;
@@ -18,42 +18,27 @@ public class PlayerController : MonoBehaviour
     bool facingRight = false;
     bool dashing = false;
     Animator anim;
+    IEnumerator dash;
 
     void Start() 
         {
             rb = GetComponent<Rigidbody2D>();
             boxCollider2D = GetComponent<BoxCollider2D>();
             anim = GetComponent<Animator>();
+            dashTrail = GetComponent<DashTrail>();
         }
 
         void FixedUpdate() 
         {
             IsGrounded();
-            rb.velocity = new Vector2(horizontal*movementSpeed, rb.velocity.y);
+            if (!dashing)
+            {
+                rb.velocity = new Vector2(horizontal*movementSpeed, rb.velocity.y);
+            }
             //If you change fixed update use Time.deltaTime so your movement speed is not gonna get cucked
             //rb.velocity = new Vector2(horizontal*movementSpeed*(Time.deltaTime*100), rb.velocity.y);
             anim.SetFloat("Run", Mathf.Abs(horizontal));
             anim.speed = Mathf.Abs(horizontal);
-
-            if  (dashing && dashTime > 0)
-            {
-                //rb.velocity = Vector2.right * dashSpeed;
-                if(horizontal < 0 || facingRight)
-                {
-                        rb.AddForce(Vector2.left*dashSpeed, ForceMode2D.Impulse);
-                        dashTime -= Time.deltaTime;
-                } 
-                else if (horizontal > 0 || !facingRight)
-                {
-                        rb.AddForce(Vector2.right*dashSpeed, ForceMode2D.Impulse);
-                        dashTime -= Time.deltaTime;
-                }
-                if (dashTime < 0)
-                {
-                    dashing = false;
-                    dashTime = setDashTime;
-                }
-            }
         }
 
        
@@ -82,12 +67,23 @@ public class PlayerController : MonoBehaviour
 
         public void OnDashInput(bool dashInput)
         {
-            dashing = true;
+            dash = Dash();
+            StartCoroutine(dash);
         }
 
         private bool IsGrounded() 
         {
             RaycastHit2D hit = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f, Vector2.down, 0.05f, platformLayerMask);
             return hit.collider != null;
+        }
+
+        IEnumerator Dash()
+        {
+            dashing = true;
+            rb.velocity = new Vector2(transform.localScale.x*dashSpeed, rb.velocity.y);
+            dashTrail.InvokeRepeating("SpawnTrailPart",0,0.03f);
+            yield return new WaitForSeconds(dashTime);
+            dashTrail.CancelInvoke("SpawnTrailPart");
+            dashing = false;           
         }
 }
