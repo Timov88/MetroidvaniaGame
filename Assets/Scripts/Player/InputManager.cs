@@ -14,6 +14,7 @@ public sealed class InputManager : MonoBehaviour
     private InputActions inputActions;
     public InputEventBool jumpInputEvent;
     public InputEventBool dashInputEvent;
+    public InputEventBool shootInputEvent;
     public InputEventVector2 moveInputEvent;
 
     private void Awake()
@@ -28,6 +29,7 @@ public sealed class InputManager : MonoBehaviour
         inputActions.Player.Movement.canceled += OnMove;
         inputActions.Player.Jump.performed += OnJump;
         inputActions.Player.Dash.performed += OnDash;
+        inputActions.Player.Shoot.performed += OnShoot;
     }
 
     private void OnMove(InputAction.CallbackContext context)
@@ -53,5 +55,11 @@ public sealed class InputManager : MonoBehaviour
     {
         bool dashInput = context.ReadValueAsButton();
         dashInputEvent.Invoke(dashInput);
+    }
+
+    private void OnShoot(InputAction.CallbackContext context)
+    {
+        bool shootInput = context.ReadValueAsButton();
+        shootInputEvent.Invoke(shootInput);
     }
 }
