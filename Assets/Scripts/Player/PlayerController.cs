@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
             {
                 audio.PlayjumpSound();
                 Debug.Log("SOITA AUDIO");
-                //jumpAudio.Play();
+                //jumpAudio.Play();//
                 rb.AddForce(Vector2.up*jumpSpeed, ForceMode2D.Impulse);
             }
         }
