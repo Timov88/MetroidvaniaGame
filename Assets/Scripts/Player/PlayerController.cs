@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]float jumpSpeed;
     [SerializeField]float dashSpeed;
     [SerializeField]float dashTime;
+    [SerializeField]Transform bullet;
     [SerializeField]LayerMask platformLayerMask;
     [SerializeField]AudioSource jumpAudio;
     private float horizontal;
@@ -69,6 +70,11 @@ public class PlayerController : MonoBehaviour
         {
             dash = Dash();
             StartCoroutine(dash);
+        }
+
+        public void OnShootInput(bool shootInput)
+        {
+            Instantiate(bullet, new Vector2(1,1), Quaternion.identity);
         }
 
         private bool IsGrounded() 

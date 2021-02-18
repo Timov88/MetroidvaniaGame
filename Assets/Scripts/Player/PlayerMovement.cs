@@ -16,8 +16,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
-        boxCollider2D = GetComponent<BoxCollider2D>();
-        
+        boxCollider2D = GetComponent<BoxCollider2D>(); 
     }
 
     void Update()
@@ -43,6 +42,8 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(Vector2.up*jumpSpeed, ForceMode2D.Impulse);
         }
     }
+
+
 
     private bool IsGrounded() 
     {
