@@ -14,6 +14,7 @@ public class DashTrail : MonoBehaviour
         //if child object use
         //trailPart.transform.localScale = transform.parent.transform.localScale;
         trailPart.transform.localScale = transform.localScale;
+        trailPartRenderer.sortingOrder = 3;
         trailParts.Add(trailPart);
         
 
