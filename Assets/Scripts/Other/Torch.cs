@@ -17,7 +17,7 @@ public class Torch : MonoBehaviour
 
     void Intensity()
     {
-        light.intensity = Random.Range(0.4f, 1.5f);
+        light.intensity = Random.Range(0.6f, 1.8f);
     }
     // Update is called once per frame
     void Update()
