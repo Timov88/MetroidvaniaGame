@@ -942,8 +942,9 @@ GameObject:
   - component: {fileID: 9192698165605253549}
   - component: {fileID: 1612168666970794920}
   - component: {fileID: 1612168666970794935}
+  - component: {fileID: 6180332687025946874}
   m_Layer: 0
-  m_Name: Player1 1
+  m_Name: MasterPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1096,8 +1097,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 5
   jumpSpeed: 5
-  dashSpeed: 0
-  dashTime: 0
+  dashSpeed: 8
+  dashTime: 0.2
   platformLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -1151,7 +1152,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpawn: {fileID: 6150940666310963048, guid: 2c4d8acf918aac044bd3e25f86c06770, type: 3}
-  firePoint: {fileID: 4451754642779495762, guid: af3394efb8cea7845a25339bef02041c, type: 3}
+  firePoint: {fileID: 7845501236110082269}
+--- !u!114 &6180332687025946874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612168665799350107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bec01bd22a19d67478f4357460714238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5847676229035728271
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1169,11 +1182,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4451754642779495762, guid: af3394efb8cea7845a25339bef02041c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.099
       objectReference: {fileID: 0}
     - target: {fileID: 4451754642779495762, guid: af3394efb8cea7845a25339bef02041c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.234
       objectReference: {fileID: 0}
     - target: {fileID: 4451754642779495762, guid: af3394efb8cea7845a25339bef02041c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1213,6 +1226,7 @@ PrefabInstance:
       objectReference: {fileID: 6150940666310963048, guid: 2c4d8acf918aac044bd3e25f86c06770, type: 3}
     m_RemovedComponents:
     - {fileID: 7091017002975575585, guid: af3394efb8cea7845a25339bef02041c, type: 3}
+    - {fileID: 4451754642779495763, guid: af3394efb8cea7845a25339bef02041c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: af3394efb8cea7845a25339bef02041c, type: 3}
 --- !u!4 &7845501236110082269 stripped
 Transform:

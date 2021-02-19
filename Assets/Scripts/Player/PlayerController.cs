@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
         this.horizontal = horizontal;
         this.vertical = vertical;
 
-        if(horizontal < 0 && facingRight || horizontal > 0 && !facingRight)
+        if(horizontal < 0 && !facingRight || horizontal > 0 && facingRight)
         {
             transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
             Transform gun = transform.Find("Gun");
