@@ -6,6 +6,16 @@ public class HitPoints : MonoBehaviour
 {
     public int hp;
     public int armor;
+    public bool parry = false;
+    public float parryTime;
+
+   
+    public void OnParryInput(bool parryInput)
+    {
+        parry = false;
+    }
+
+
 
     void TakeDamage(int dmg)
     {
