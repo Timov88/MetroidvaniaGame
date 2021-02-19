@@ -11,13 +11,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]float jumpSpeed;
     [SerializeField]float dashSpeed;
     [SerializeField]float dashTime;
-    [SerializeField]Transform bullet;
     [SerializeField]LayerMask platformLayerMask;
     [SerializeField]AudioSource jumpAudio;
     private float horizontal;
     private float vertical;
     bool facingRight = false;
     bool dashing = false;
+    private GameObject gun;
     Animator anim;
     IEnumerator dash;
     
@@ -28,8 +28,7 @@ public class PlayerController : MonoBehaviour
             rb = GetComponent<Rigidbody2D>();
             boxCollider2D = GetComponent<BoxCollider2D>();
             anim = GetComponent<Animator>();
-            dashTrail = GetComponent<DashTrail>();
-            
+            dashTrail = GetComponent<DashTrail>();        
     }
 
     void FixedUpdate() 
@@ -42,8 +41,7 @@ public class PlayerController : MonoBehaviour
             anim.speed = Mathf.Abs(horizontal);
         }
         //If you change fixed update use Time.deltaTime so your movement speed is not gonna get cucked
-        //rb.velocity = new Vector2(horizontal*movementSpeed*(Time.deltaTime*100), rb.velocity.y);
-            
+        //rb.velocity = new Vector2(horizontal*movementSpeed*(Time.deltaTime*100), rb.velocity.y);        
     }
 
    
@@ -53,9 +51,11 @@ public class PlayerController : MonoBehaviour
         this.horizontal = horizontal;
         this.vertical = vertical;
 
-        if(horizontal < 0 && !facingRight || horizontal > 0 && facingRight)
+        if(horizontal < 0 && facingRight || horizontal > 0 && !facingRight)
         {
             transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            Transform gun = transform.Find("Gun");
+            gun.Rotate(0f, 180f, 0f);
             facingRight = !facingRight;
         }
         //Debug.Log($"{horizontal},{vertical}");
@@ -64,8 +64,7 @@ public class PlayerController : MonoBehaviour
     public void OnJumpInput(bool jumpInput)
     {
         if (IsGrounded())
-        {
-            
+        {   
             Debug.Log("SOITA AUDIO");
             //jumpAudio.Play();//
             rb.AddForce(Vector2.up*jumpSpeed, ForceMode2D.Impulse);
@@ -76,11 +75,6 @@ public class PlayerController : MonoBehaviour
     {
         dash = Dash();
         StartCoroutine(dash);
-    }
-
-    public void OnShootInput(bool shootInput)
-    {
-        Instantiate(bullet, new Vector2(1,1), Quaternion.identity);
     }
 
     private bool IsGrounded() 
@@ -96,6 +90,6 @@ public class PlayerController : MonoBehaviour
         dashTrail.InvokeRepeating("SpawnTrailPart",0,0.03f);
         yield return new WaitForSeconds(dashTime);
         dashTrail.CancelInvoke("SpawnTrailPart");
-        dashing = false;           
+        dashing = false;
     }
 }
