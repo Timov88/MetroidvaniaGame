@@ -68,7 +68,13 @@ public class PlayerController : MonoBehaviour
             Debug.Log("SOITA AUDIO");
             //jumpAudio.Play();//
             rb.AddForce(Vector2.up*jumpSpeed, ForceMode2D.Impulse);
+            anim.SetBool("Jump", true);
         }
+        else if (rb.velocity.y < 0)
+        {
+            anim.SetBool("Jump", false);
+        }
+       
     }
 
     public void OnDashInput(bool dashInput)
