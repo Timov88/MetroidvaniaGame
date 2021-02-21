@@ -33,12 +33,17 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate() 
     {
-        IsGrounded();
+        //IsGrounded();
         if (!dashing)
         {
             rb.velocity = new Vector2(horizontal*movementSpeed, rb.velocity.y);
             anim.SetFloat("Run", Mathf.Abs(horizontal));
             //anim.speed = Mathf.Abs(horizontal);
+        }
+        anim.SetFloat("Velocity", rb.velocity.y);
+        if (IsGrounded())
+        {
+            anim.SetBool("Jump", false);
         }
         //If you change fixed update use Time.deltaTime so your movement speed is not gonna get cucked
         //rb.velocity = new Vector2(horizontal*movementSpeed*(Time.deltaTime*100), rb.velocity.y);        
@@ -70,11 +75,6 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector2.up*jumpSpeed, ForceMode2D.Impulse);
             anim.SetBool("Jump", true);
         }
-        else if (rb.velocity.y < 0)
-        {
-            anim.SetBool("Jump", false);
-        }
-       
     }
 
     public void OnDashInput(bool dashInput)
