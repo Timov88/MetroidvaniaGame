@@ -130,6 +130,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1612168665644286789, guid: 675b764097d6b0546ab786bce2d762a5, type: 3}
+      propertyPath: m_Volume
+      value: 0.172
+      objectReference: {fileID: 0}
+    - target: {fileID: 1612168665644286790, guid: 675b764097d6b0546ab786bce2d762a5, type: 3}
+      propertyPath: m_Volume
+      value: 0.151
+      objectReference: {fileID: 0}
+    - target: {fileID: 1612168665644286791, guid: 675b764097d6b0546ab786bce2d762a5, type: 3}
+      propertyPath: m_Volume
+      value: 0.071
+      objectReference: {fileID: 0}
     - target: {fileID: 1612168665644286842, guid: 675b764097d6b0546ab786bce2d762a5, type: 3}
       propertyPath: Loop
       value: 0
@@ -200,7 +212,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2972870722316634080, guid: 675b764097d6b0546ab786bce2d762a5, type: 3}
       propertyPath: m_Volume
-      value: 1
+      value: 0.113
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776659705959379192, guid: 675b764097d6b0546ab786bce2d762a5, type: 3}
+      propertyPath: m_Volume
+      value: 0.108
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878245353958226664, guid: 675b764097d6b0546ab786bce2d762a5, type: 3}
+      propertyPath: m_Volume
+      value: 0.156
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 675b764097d6b0546ab786bce2d762a5, type: 3}
