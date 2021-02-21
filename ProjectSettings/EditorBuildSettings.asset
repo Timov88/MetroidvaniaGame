@@ -8,8 +8,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Jussi/JussinMenu.unity
     guid: fc1e1b8db53dbce4aadad79949a791b2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Aaron/TimonSantinScene 1.unity
     guid: f2d5381d016d6134ca3e4d7df52b88db
+  - enabled: 1
+    path: Assets/Scenes/Timo/TimonSantinScene 2.unity
+    guid: 5b175df81a1a87a4a9c098676d87896f
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 2b100d5f2025c294b81fe1ee6255dc74, type: 2}
