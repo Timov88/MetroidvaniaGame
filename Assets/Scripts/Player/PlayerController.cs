@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(horizontal*movementSpeed, rb.velocity.y);
             anim.SetFloat("Run", Mathf.Abs(horizontal));
-            anim.speed = Mathf.Abs(horizontal);
+            //anim.speed = Mathf.Abs(horizontal);
         }
         //If you change fixed update use Time.deltaTime so your movement speed is not gonna get cucked
         //rb.velocity = new Vector2(horizontal*movementSpeed*(Time.deltaTime*100), rb.velocity.y);        
@@ -97,5 +97,10 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(dashTime);
         dashTrail.CancelInvoke("SpawnTrailPart");
         dashing = false;
+    }
+
+    public void OnMeleeInput(bool meleeInput)
+    {
+        anim.SetTrigger("Melee");
     }
 }

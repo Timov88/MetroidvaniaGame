@@ -17,6 +17,7 @@ public sealed class InputManager : MonoBehaviour
     public InputEventBool parryInputEvent;
     public InputEventBool shootInputEvent;
     public InputEventVector2 moveInputEvent;
+    public InputEventBool meleeInputEvent;
 
     private void Awake()
     {
@@ -32,6 +33,7 @@ public sealed class InputManager : MonoBehaviour
         inputActions.Player.Dash.performed += OnDash;
         inputActions.Player.Shoot.performed += OnShoot;
         inputActions.Player.Parry.performed += OnParry;
+        inputActions.Player.Melee.performed += OnMelee;
     }
 
     private void OnMove(InputAction.CallbackContext context)
@@ -69,5 +71,11 @@ public sealed class InputManager : MonoBehaviour
     {
         bool parryInput = context.ReadValueAsButton();
         parryInputEvent.Invoke(parryInput);
+    }
+
+    private void OnMelee(InputAction.CallbackContext context)
+    {
+        bool meleeInput = context.ReadValueAsButton();
+        meleeInputEvent.Invoke(meleeInput);
     }
 }
