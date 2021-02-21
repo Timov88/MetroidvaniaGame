@@ -153,7 +153,7 @@ public class @InputActions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""Melee"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""cebaaed7-0906-4e77-a880-4b4a163a9137"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -227,6 +227,17 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""f077ce4f-341d-4b9e-b6ce-651467aadd58"",
                     ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Melee"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6cac65cd-5936-405f-98db-5cce86b4b817"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
