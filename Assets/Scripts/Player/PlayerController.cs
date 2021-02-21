@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private float vertical;
     bool facingRight = false;
     bool dashing = false;
+    bool melee = false;
     private GameObject gun;
     Animator anim;
     IEnumerator dash;
@@ -70,11 +71,12 @@ public class PlayerController : MonoBehaviour
     {
         if (IsGrounded())
         {   
-            Debug.Log("SOITA AUDIO");
+           // Debug.Log("SOITA AUDIO");
             //jumpAudio.Play();//
             rb.AddForce(Vector2.up*jumpSpeed, ForceMode2D.Impulse);
             anim.SetBool("Jump", true);
         }
+        
     }
 
     public void OnDashInput(bool dashInput)
@@ -101,6 +103,15 @@ public class PlayerController : MonoBehaviour
 
     public void OnMeleeInput(bool meleeInput)
     {
+        melee = true;
+        if ((melee == true) && !IsGrounded())
+        {
+            
+            Debug.Log("hyppylyönti");
+            //anim.SetBool("Jump", false);
+            anim.SetTrigger("Melee");
+            
+        }
         anim.SetTrigger("Melee");
     }
 }
