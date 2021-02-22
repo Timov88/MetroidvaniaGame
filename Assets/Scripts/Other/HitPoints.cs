@@ -19,14 +19,13 @@ public class HitPoints : MonoBehaviour
 
     void TakeDamage(int dmg)
     {
-        if(hp > 0)
+        hp -= dmg;
+        if (hp <= 0)
         {
-            hp -= dmg;
-        }
-        else
-        {
+            
             KillMe();
-        }      
+        }
+        
     }
 
     void KillMe()
@@ -36,6 +35,7 @@ public class HitPoints : MonoBehaviour
 
     public void CheckDamage(int dmg)
     {
+        Debug.Log("hölö");
         dmg -= armor;
         TakeDamage(dmg);
     }

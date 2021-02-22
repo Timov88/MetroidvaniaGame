@@ -109,12 +109,6 @@ public class PlayerController : MonoBehaviour
     {
         melee = true;
         anim.SetTrigger("Melee");
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayerMask);
-
-        //foreach(Collider2D enemy in hitEnemies)
-        //{
-            Debug.Log("löit" + enemy.name);
-        //}
 
         if ((melee == true) && !IsGrounded())
         {
@@ -134,4 +128,16 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
+    public void MeleeWeaponHit()
+    {
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayerMask);
+
+        foreach(Collider2D coll in hitEnemies)
+        {
+            if (coll != null)
+            {
+                coll.GetComponent<HitPoints>().CheckDamage(20);
+            }
+                    }
+    }
 }
