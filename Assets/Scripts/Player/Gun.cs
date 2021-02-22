@@ -26,11 +26,11 @@ public class Gun : MonoBehaviour
         shooting = true;
         anim.SetTrigger("Shoot");
         anim.SetBool("Jump", false);
-        Instantiate(bulletSpawn, firePoint.position, firePoint.rotation);
+        //Instantiate(bulletSpawn, firePoint.position, firePoint.rotation);
 
-        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, firePoint.right, 1000, enemyLayerMask);
-        Debug.DrawRay(firePoint.position, firePoint.right, Color.red, 100, false);
-        Debug.Log(hit.collider.gameObject.name);
+        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, firePoint.right, 1000);
+        //Debug.DrawRay(firePoint.position, firePoint.right, Color.red, 100, false);
+        //Debug.Log(hit.collider.gameObject.name);
 
         if (hit)
         {
@@ -48,7 +48,7 @@ public class Gun : MonoBehaviour
             }
             else
             {
-
+                return;
             }
         }
     }

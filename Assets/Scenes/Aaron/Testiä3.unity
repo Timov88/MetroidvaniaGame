@@ -236,6 +236,14 @@ PrefabInstance:
       propertyPath: hp
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 1612168666970794935, guid: 675b764097d6b0546ab786bce2d762a5, type: 3}
+      propertyPath: bulletSpawn
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1612168666970794935, guid: 675b764097d6b0546ab786bce2d762a5, type: 3}
+      propertyPath: enemyLayerMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 7845501236110082269, guid: 675b764097d6b0546ab786bce2d762a5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.527
@@ -461,6 +469,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 8.42
       objectReference: {fileID: 0}
+    - target: {fileID: 4784445168704285140, guid: b3229d746f30f084cb7bc3ec9289b707, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4784445168704285143, guid: b3229d746f30f084cb7bc3ec9289b707, type: 3}
       propertyPath: m_Follow
       value: 
@@ -472,6 +484,14 @@ PrefabInstance:
     - target: {fileID: 4784445168704285162, guid: b3229d746f30f084cb7bc3ec9289b707, type: 3}
       propertyPath: m_LocalPosition.y
       value: 10.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784445168845100888, guid: b3229d746f30f084cb7bc3ec9289b707, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784445168845100889, guid: b3229d746f30f084cb7bc3ec9289b707, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4784445168891866424, guid: b3229d746f30f084cb7bc3ec9289b707, type: 3}
       propertyPath: m_RootOrder
@@ -528,6 +548,10 @@ PrefabInstance:
     - target: {fileID: 4784445170177804869, guid: b3229d746f30f084cb7bc3ec9289b707, type: 3}
       propertyPath: m_LocalPosition.y
       value: 10.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784445170177804890, guid: b3229d746f30f084cb7bc3ec9289b707, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4784445170177804890, guid: b3229d746f30f084cb7bc3ec9289b707, type: 3}
       propertyPath: m_ClearFlags
@@ -1191,7 +1215,7 @@ GameObject:
   - component: {fileID: 1132814404}
   m_Layer: 7
   m_Name: EnemyAttackPoint
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1971,6 +1995,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2587469349182293882, guid: cea7ef76aed105a48a3633669db678e2, type: 3}
       propertyPath: m_Name
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587469349413021190, guid: cea7ef76aed105a48a3633669db678e2, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587469350378587185, guid: cea7ef76aed105a48a3633669db678e2, type: 3}
+      propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
