@@ -79,6 +79,7 @@ public class PlayerController : MonoBehaviour
             //jumpAudio.Play();//
             rb.AddForce(Vector2.up*jumpSpeed, ForceMode2D.Impulse);
             anim.SetBool("Jump", true);
+            
         }
         
     }

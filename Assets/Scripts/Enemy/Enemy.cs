@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     public void LookAtPlayer()
     {
         
-        if (player.position.x > transform.position.x && !facingRight || player.position.x < transform.position.x && facingRight)
+        if ((player.position.x > transform.position.x && !facingRight || player.position.x < transform.position.x && facingRight) && (transform != null))
         {
             facingRight = !facingRight;
             transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);

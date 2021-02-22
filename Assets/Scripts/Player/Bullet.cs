@@ -28,9 +28,9 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, 2f);
     }
 
-    void OnTriggerEnter2D(Collider2D hit) {
-        Debug.Log(hit.name);
-        Debug.Log(hit.gameObject.tag);
+    //void OnTriggerEnter2D(Collider2D hit) {
+       // debug.log(hit.name);
+        //Debug.Log(hit.gameObject.tag);
 
         //Laita damage
         /* 
@@ -41,7 +41,7 @@ public class Bullet : MonoBehaviour
             Take damage tai jotain semmosta
         }
         */
-    }
+    //}
 
     /*IEnumerator BulletFly()
     {
