@@ -21,5 +21,27 @@ public class Gun : MonoBehaviour
     public void OnShootInput(bool shootInput)
     {
         Instantiate(bulletSpawn, firePoint.position, firePoint.rotation);
+
+        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, firePoint.right);
+
+        Debug.Log(hit.collider.tag);
+
+        if (hit)
+        {
+            Debug.Log("PULLLLLLLLLLLLLLLLLLLLLL");
+            if (hit.collider.tag == "Ground")
+            {
+                Debug.Log("KULLLLLLLLLLLLLLLLL");
+                Destroy(hit.transform.gameObject);
+            }
+            else if (hit.collider.tag == "Enemy")
+            {
+
+            }
+            else
+            {
+
+            }
+        }
     }
 }

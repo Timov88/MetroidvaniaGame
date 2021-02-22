@@ -44,7 +44,7 @@ public class AudioController : MonoBehaviour
     }
     public void PlayMoveGrassSound()
     {
-        Debug.Log("hölöhölö");
+      //  Debug.Log("hölöhölö");
         MoveGrassSound.Play();
     }
 

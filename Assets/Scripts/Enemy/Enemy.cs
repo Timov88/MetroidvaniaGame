@@ -9,6 +9,10 @@ public class Enemy : MonoBehaviour
     SpriteRenderer sr;
     bool facingRight = false;
     [SerializeField] GameObject weapon;
+    //public Transform enemyAttackPoint;
+    //public float enemyAttackRange = 0.5f;
+    //public LayerMask playerLayerMask;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +22,7 @@ public class Enemy : MonoBehaviour
 
     public void LookAtPlayer()
     {
+        
         if (player.position.x > transform.position.x && !facingRight || player.position.x < transform.position.x && facingRight)
         {
             facingRight = !facingRight;
@@ -30,6 +35,8 @@ public class Enemy : MonoBehaviour
         weapon.SetActive(trueOrFalse);
     }
     // Update is called once per frame
+   
+
     void Update()
     {
         

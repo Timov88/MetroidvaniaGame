@@ -40,7 +40,7 @@ public class AudioPlayer : MonoBehaviour
     }
     public void MoveGrassSound()
     {
-        Debug.Log(audio.gameObject);
+       // Debug.Log(audio.gameObject);
         audio.PlayMoveGrassSound();
     }
 }

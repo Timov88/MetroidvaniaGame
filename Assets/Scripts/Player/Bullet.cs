@@ -28,6 +28,21 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, 2f);
     }
 
+    void OnTriggerEnter2D(Collider2D hit) {
+        Debug.Log(hit.name);
+        Debug.Log(hit.gameObject.tag);
+
+        //Laita damage
+        /* 
+        if (hit.gameObject.tag == anna tagin nimi esim(Enemy)
+        {
+            Destroy(gameobject);
+            tai 
+            Take damage tai jotain semmosta
+        }
+        */
+    }
+
     /*IEnumerator BulletFly()
     {
         dashTrail.InvokeRepeating("SpawnTrailPart",0,0.01f);

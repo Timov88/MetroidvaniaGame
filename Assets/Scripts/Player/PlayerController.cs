@@ -17,9 +17,13 @@ public class PlayerController : MonoBehaviour
     private float vertical;
     bool facingRight = false;
     bool dashing = false;
+    bool melee = false;
     private GameObject gun;
     Animator anim;
     IEnumerator dash;
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayerMask;
     
     
 
@@ -28,17 +32,23 @@ public class PlayerController : MonoBehaviour
             rb = GetComponent<Rigidbody2D>();
             boxCollider2D = GetComponent<BoxCollider2D>();
             anim = GetComponent<Animator>();
-            dashTrail = GetComponent<DashTrail>();        
+            dashTrail = GetComponent<DashTrail>();    
+            
     }
 
     void FixedUpdate() 
     {
-        IsGrounded();
+        //IsGrounded();
         if (!dashing)
         {
             rb.velocity = new Vector2(horizontal*movementSpeed, rb.velocity.y);
             anim.SetFloat("Run", Mathf.Abs(horizontal));
-            anim.speed = Mathf.Abs(horizontal);
+            //anim.speed = Mathf.Abs(horizontal);
+        }
+        anim.SetFloat("Velocity", rb.velocity.y);
+        if (IsGrounded())
+        {
+            anim.SetBool("Jump", false);
         }
         //If you change fixed update use Time.deltaTime so your movement speed is not gonna get cucked
         //rb.velocity = new Vector2(horizontal*movementSpeed*(Time.deltaTime*100), rb.velocity.y);        
@@ -65,10 +75,12 @@ public class PlayerController : MonoBehaviour
     {
         if (IsGrounded())
         {   
-            Debug.Log("SOITA AUDIO");
+           // Debug.Log("SOITA AUDIO");
             //jumpAudio.Play();//
             rb.AddForce(Vector2.up*jumpSpeed, ForceMode2D.Impulse);
+            anim.SetBool("Jump", true);
         }
+        
     }
 
     public void OnDashInput(bool dashInput)
@@ -91,5 +103,41 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(dashTime);
         dashTrail.CancelInvoke("SpawnTrailPart");
         dashing = false;
+    }
+
+    public void OnMeleeInput(bool meleeInput)
+    {
+        melee = true;
+        anim.SetTrigger("Melee");
+
+        if ((melee == true) && !IsGrounded())
+        {
+            
+            Debug.Log("hyppylyönti");
+            //anim.SetBool("Jump", false);
+            anim.SetTrigger("Melee");
+            
+        }
+        
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+    public void MeleeWeaponHit()
+    {
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayerMask);
+
+        foreach(Collider2D coll in hitEnemies)
+        {
+            if (coll != null)
+            {
+                coll.GetComponent<HitPoints>().CheckDamage(20);
+            }
+        }
     }
 }
