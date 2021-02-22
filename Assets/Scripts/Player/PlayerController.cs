@@ -138,6 +138,6 @@ public class PlayerController : MonoBehaviour
             {
                 coll.GetComponent<HitPoints>().CheckDamage(20);
             }
-                    }
+        }
     }
 }

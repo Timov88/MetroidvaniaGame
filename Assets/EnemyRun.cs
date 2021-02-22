@@ -8,10 +8,12 @@ public class EnemyRun : StateMachineBehaviour
     Rigidbody2D rb;
     Enemy enemy;
     float attackRange = 1.4f;
-    
+   
+
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = animator.GetComponentInParent<Rigidbody2D>();
         enemy = animator.GetComponentInParent<Enemy>();
@@ -20,6 +22,7 @@ public class EnemyRun : StateMachineBehaviour
     //OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        
         enemy.LookAtPlayer();
         Vector2 target = new Vector2(player.position.x, rb.position.y);
         Vector2 newPos = Vector2.MoveTowards(rb.position, target, 2 * Time.fixedDeltaTime);
@@ -42,4 +45,6 @@ public class EnemyRun : StateMachineBehaviour
         animator.ResetTrigger("Attack");
         enemy.Attack(false);
     }
+   
 }
+
