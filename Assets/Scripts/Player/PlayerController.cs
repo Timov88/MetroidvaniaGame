@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
     private GameObject gun;
     Animator anim;
     IEnumerator dash;
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayerMask;
     
     
 
@@ -29,7 +32,8 @@ public class PlayerController : MonoBehaviour
             rb = GetComponent<Rigidbody2D>();
             boxCollider2D = GetComponent<BoxCollider2D>();
             anim = GetComponent<Animator>();
-            dashTrail = GetComponent<DashTrail>();        
+            dashTrail = GetComponent<DashTrail>();    
+            
     }
 
     void FixedUpdate() 
@@ -104,6 +108,14 @@ public class PlayerController : MonoBehaviour
     public void OnMeleeInput(bool meleeInput)
     {
         melee = true;
+        anim.SetTrigger("Melee");
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayerMask);
+
+        //foreach(Collider2D enemy in hitEnemies)
+        //{
+            Debug.Log("löit" + enemy.name);
+        //}
+
         if ((melee == true) && !IsGrounded())
         {
             
@@ -112,6 +124,14 @@ public class PlayerController : MonoBehaviour
             anim.SetTrigger("Melee");
             
         }
-        anim.SetTrigger("Melee");
+        
     }
+
+    void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
 }
