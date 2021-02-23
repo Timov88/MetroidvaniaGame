@@ -9,15 +9,17 @@ public class Enemy : MonoBehaviour
     SpriteRenderer sr;
     bool facingRight = false;
     [SerializeField] GameObject weapon;
-    //public Transform enemyAttackPoint;
-    //public float enemyAttackRange = 0.5f;
-    //public LayerMask playerLayerMask;
+    Animator anim;
+    
+    
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        anim = GetComponentInChildren<Animator>();
+        
     }
 
     public void LookAtPlayer()
@@ -35,8 +37,26 @@ public class Enemy : MonoBehaviour
         weapon.SetActive(trueOrFalse);
     }
     // Update is called once per frame
-   
+    public void EnemyStunned()
+    {
+        //anim.SetTrigger("Stun");
+        anim.SetBool("Stunned", true);
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        
+        //GetComponent<Collider2D>().enabled = false;
+        StartCoroutine(WaitStunEnd());
+    }
 
+    public IEnumerator WaitStunEnd()
+    {
+        // enemy = GetComponent<Enemy>();
+        Debug.Log("vihollinen on stunnissa, lol");
+        
+        yield return new WaitForSeconds(4);
+        rb.constraints = RigidbodyConstraints2D.None;
+        anim.SetBool("Stunned", false);
+
+    }
     void Update()
     {
         

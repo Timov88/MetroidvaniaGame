@@ -409,6 +409,17 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""action"": ""Parry"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3c9650bd-3557-419c-9ebf-57b03c6c8c53"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Parry"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }

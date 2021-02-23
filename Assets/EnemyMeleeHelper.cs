@@ -7,6 +7,7 @@ public class EnemyMeleeHelper : MonoBehaviour
     public Transform enemyAttackPoint;
     public float enemyAttackRange = 0.5f;
     public LayerMask playerLayerMask;
+    public CircleCollider2D weaponCollider;
 
     public void EnemyMeleeWeaponHit()
     {
@@ -19,5 +20,20 @@ public class EnemyMeleeHelper : MonoBehaviour
                 coll.GetComponent<HitPoints>().CheckDamage(20);
             }
         }
+    }
+    void Start()
+    {
+        //weaponCollider = GetComponent<CircleCollider2D>();
+        weaponCollider.enabled = false;
+    }
+    public void WeaponColliderEnabler()
+    {
+        weaponCollider.enabled = true;
+        Debug.Log("weapon coll enabled");
+    }
+    public void WeaponColliderDisabler()
+    {
+        weaponCollider.enabled = false;
+        Debug.Log("weapon coll disabled");
     }
 }
