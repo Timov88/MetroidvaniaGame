@@ -2319,6 +2319,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2587469349413021184, guid: cea7ef76aed105a48a3633669db678e2, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587469349413021184, guid: cea7ef76aed105a48a3633669db678e2, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587469349413021184, guid: cea7ef76aed105a48a3633669db678e2, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2587469349413021190, guid: cea7ef76aed105a48a3633669db678e2, type: 3}
       propertyPath: m_TagString
       value: Enemy
