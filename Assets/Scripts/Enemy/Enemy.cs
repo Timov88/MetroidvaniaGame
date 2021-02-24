@@ -10,8 +10,8 @@ public class Enemy : MonoBehaviour
     bool facingRight = false;
     [SerializeField] GameObject weapon;
     Animator anim;
-    
-    
+    AudioPlayer parryAudio;
+
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         anim = GetComponentInChildren<Animator>();
-        
+        parryAudio = GetComponentInChildren<AudioPlayer>();
     }
 
     public void LookAtPlayer()
@@ -41,6 +41,7 @@ public class Enemy : MonoBehaviour
     {
         //anim.SetTrigger("Stun");
         anim.SetBool("Stunned", true);
+        parryAudio.ParrySound();
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         
         //GetComponent<Collider2D>().enabled = false;
