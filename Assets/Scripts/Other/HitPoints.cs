@@ -11,7 +11,7 @@ public class HitPoints : MonoBehaviour
     private float timer;
     //public Rigidbody2D rb;
     //public Enemy enemy;
-    
+    Animator anim;
 
 
     public void OnParryInput(bool parryInput)
@@ -43,14 +43,19 @@ public class HitPoints : MonoBehaviour
     void TakeDamage(int dmg)
     {
         hp -= dmg;
+        anim.SetBool("Hurt", true);
         if (hp <= 0)
         {
             
             KillMe();
         }
-        
+        StartCoroutine(HurtWindow());
     }
-
+    public IEnumerator HurtWindow()
+    {
+        yield return new WaitForSeconds(1);
+        anim.SetBool("Hurt", false);
+    }
     void KillMe()
     {
         Destroy(this.gameObject);
@@ -67,7 +72,7 @@ public class HitPoints : MonoBehaviour
     {
         // rb = GetComponent<Rigidbody2D>();
         //enemy = GetComponent<Enemy>();
-        
+        anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
