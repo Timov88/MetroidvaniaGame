@@ -67,7 +67,7 @@ public class HitPoints : MonoBehaviour
         dmg -= armor;
         TakeDamage(dmg);
     }
-    // Start is called before the first frame update
+    
     void Start()
     {
         // rb = GetComponent<Rigidbody2D>();
@@ -75,7 +75,7 @@ public class HitPoints : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
         
