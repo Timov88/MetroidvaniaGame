@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayerMask;
+   // HitPoints playerDeath;
     
     
 

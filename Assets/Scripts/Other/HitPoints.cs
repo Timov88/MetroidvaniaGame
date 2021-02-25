@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HitPoints : MonoBehaviour
 {
+    Rigidbody2D rb;
     public int hp;
     public int armor;
     public bool parry = false;
@@ -13,7 +14,7 @@ public class HitPoints : MonoBehaviour
     //public Enemy enemy;
     Animator anim;
     AudioPlayer deathAudio;
-    public bool playerDeath;
+    public bool playerDeath = false;
 
 
     public void OnParryInput(bool parryInput)
@@ -52,6 +53,8 @@ public class HitPoints : MonoBehaviour
             {
                 playerDeath = true;
                 deathAudio.DeathSound();
+                rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                
                 KillMe();
 
             }
@@ -86,15 +89,16 @@ public class HitPoints : MonoBehaviour
     
     void Start()
     {
-        // rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         //enemy = GetComponent<Enemy>();
         anim = GetComponentInChildren<Animator>();
         deathAudio = GetComponentInChildren<AudioPlayer>();
-        playerDeath = false;
-    }
+        
 
-   
-    void Update()
+}
+
+
+void Update()
     {
         
     }
