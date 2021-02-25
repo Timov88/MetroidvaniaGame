@@ -1171,10 +1171,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fe7a1fa935ca3545b304c4cd597b240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 3000
+  hp: 30
   armor: 0
   parry: 0
   parryTime: 0
+  playerDeath: 0
 --- !u!114 &1612168666970794935
 MonoBehaviour:
   m_ObjectHideFlags: 0

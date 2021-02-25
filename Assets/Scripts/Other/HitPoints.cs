@@ -12,6 +12,8 @@ public class HitPoints : MonoBehaviour
     //public Rigidbody2D rb;
     //public Enemy enemy;
     Animator anim;
+    AudioPlayer deathAudio;
+    public bool playerDeath;
 
 
     public void OnParryInput(bool parryInput)
@@ -42,14 +44,19 @@ public class HitPoints : MonoBehaviour
     }
     void TakeDamage(int dmg)
     {
-        hp -= dmg;
-        anim.SetBool("Hurt", true);
-        if (hp <= 0)
+        if (playerDeath == false)
         {
-            
-            KillMe();
+            hp -= dmg;
+            anim.SetBool("Hurt", true);
+            if (hp <= 0)
+            {
+                playerDeath = true;
+                deathAudio.DeathSound();
+                KillMe();
+
+            }
+            StartCoroutine(HurtWindow());
         }
-        StartCoroutine(HurtWindow());
     }
     public IEnumerator HurtWindow()
     {
@@ -58,9 +65,18 @@ public class HitPoints : MonoBehaviour
     }
     void KillMe()
     {
-        Destroy(this.gameObject);
+        //playerDeath = true;
+        Debug.Log("you are ded");
+        anim.SetBool("Death", true);
+        //Destroy(this.gameObject);
+        StartCoroutine(DeathWait());
     }
 
+    public IEnumerator DeathWait()
+    {
+        yield return new WaitForSeconds(5);
+        
+    }
     public void CheckDamage(int dmg)
     {
         //Debug.Log("hölö");
@@ -73,6 +89,8 @@ public class HitPoints : MonoBehaviour
         // rb = GetComponent<Rigidbody2D>();
         //enemy = GetComponent<Enemy>();
         anim = GetComponentInChildren<Animator>();
+        deathAudio = GetComponentInChildren<AudioPlayer>();
+        playerDeath = false;
     }
 
    
