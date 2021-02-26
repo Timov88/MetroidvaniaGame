@@ -123,14 +123,17 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("testi������");
         knockback = true;
-        //this.horizontal = 0;
+        this.horizontal = 0;
         //this.vertical = 0;
         /*movementSpeed = 0;
         Debug.Log($"{horizontal},{vertical}");
         Debug.Log(movementSpeed);*/
-        yield return new WaitForSeconds(0.7f);
+        //yield return new WaitForSeconds(0.1f);
         //Mathf.Clamp(rb.position - knockbackDirection, -1, 1);
-        rb.AddForce((rb.position - knockbackDirection)*0.2f, ForceMode2D.Impulse);
+        //Quaternion.LookRotation(knockbackDirection);
+        //Debug.Log(knockbackDirection.)
+        //rb.AddRelativeForce((rb.position.normalized - knockbackDirection.normalized)*0.2f, ForceMode2D.Impulse);
+        rb.velocity = new Vector2(Mathf.Clamp(rb.position.x - knockbackDirection.x, -1, 1) * 5.0f, rb.velocity.y);
         //rb.velocity = new Vector2(0.2f, rb.velocity.y);
         Debug.Log(rb.position - knockbackDirection);
         yield return new WaitForSeconds(0.8f);
@@ -152,7 +155,7 @@ public class PlayerController : MonoBehaviour
         if ((melee == true) && !IsGrounded())
         {
             
-            Debug.Log("hyppyly�nti");
+            Debug.Log("hyppylyönti");
             //anim.SetBool("Jump", false);
             anim.SetTrigger("Melee");
             
