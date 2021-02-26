@@ -10,6 +10,7 @@ public class EnemyRun : StateMachineBehaviour
     float attackRange = 1.4f;
     HitPoints death;
     bool playerDeath;
+   
 
 
 

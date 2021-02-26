@@ -24,12 +24,14 @@ public class Enemy : MonoBehaviour
 
     public void LookAtPlayer()
     {
-        
-        if ((player.position.x > transform.position.x && !facingRight || player.position.x < transform.position.x && facingRight) && (transform != null))
+        if (player != null)
         {
-            facingRight = !facingRight;
-            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-        }    
+            if (player.position.x > transform.position.x && !facingRight || player.position.x < transform.position.x && facingRight)
+            {
+                facingRight = !facingRight;
+                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            }
+        }
     }
 
     public void Attack(bool trueOrFalse)

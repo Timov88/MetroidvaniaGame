@@ -24,9 +24,11 @@ public class PlayerController : MonoBehaviour
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayerMask;
+    bool knockback = false;
+    public Vector2 knockbackDirection;
    // HitPoints playerDeath;
-    
-    
+
+
 
     void Start() 
     {
@@ -40,7 +42,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate() 
     {
         //IsGrounded();
-        if (!dashing)
+        if (!dashing && !knockback)
         {
             rb.velocity = new Vector2(horizontal*movementSpeed, rb.velocity.y);
             anim.SetFloat("Run", Mathf.Abs(horizontal));
@@ -51,6 +53,7 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("Jump", false);
         }
+        
         //If you change fixed update use Time.deltaTime so your movement speed is not gonna get cucked
         //rb.velocity = new Vector2(horizontal*movementSpeed*(Time.deltaTime*100), rb.velocity.y);        
     }
@@ -61,15 +64,17 @@ public class PlayerController : MonoBehaviour
     {
         this.horizontal = horizontal;
         this.vertical = vertical;
-
-        if(horizontal < 0 && !facingRight || horizontal > 0 && facingRight)
+        if (!dashing && !knockback)
         {
-            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-            Transform gun = transform.Find("Gun");
-            gun.Rotate(0f, 180f, 0f);
-            facingRight = !facingRight;
+            if (horizontal < 0 && !facingRight || horizontal > 0 && facingRight)
+            {
+                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+                Transform gun = transform.Find("Gun");
+                gun.Rotate(0f, 180f, 0f);
+                facingRight = !facingRight;
+            }
+            //Debug.Log($"{horizontal},{vertical}");
         }
-        //Debug.Log($"{horizontal},{vertical}");
     }
 
     public void OnJumpInput(bool jumpInput)
@@ -106,6 +111,14 @@ public class PlayerController : MonoBehaviour
         dashTrail.CancelInvoke("SpawnTrailPart");
         dashing = false;
     }
+    public IEnumerator KnockBack()
+    {
+        Debug.Log("testi‰‰‰‰‰‰");
+        knockback = true;
+        rb.AddForce((rb.position - knockbackDirection )*0.6f, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(0.8f);
+        knockback = false;
+    }
 
     public void OnMeleeInput(bool meleeInput)
     {
@@ -138,7 +151,7 @@ public class PlayerController : MonoBehaviour
         {
             if (coll != null)
             {
-                coll.GetComponent<HitPoints>().CheckDamage(20);
+                coll.GetComponent<HitPoints>().CheckDamage(20, new Vector2(transform.position.x, 0));
             }
         }
     }

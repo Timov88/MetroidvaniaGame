@@ -1139,6 +1139,7 @@ MonoBehaviour:
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  knockbackDirection: {x: 0, y: 0}
 --- !u!114 &9192698165569592350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1171,11 +1172,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fe7a1fa935ca3545b304c4cd597b240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 30
+  hp: 3000
   armor: 0
   parry: 0
   parryTime: 0
   playerDeath: 0
+  playerDeathObject: {fileID: 8126909673770293106, guid: f292452864cbae141be26141ef3f2e1d, type: 3}
 --- !u!114 &1612168666970794935
 MonoBehaviour:
   m_ObjectHideFlags: 0
