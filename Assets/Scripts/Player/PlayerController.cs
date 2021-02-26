@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]float dashTime;
     [SerializeField]LayerMask platformLayerMask;
     [SerializeField]AudioSource jumpAudio;
+    [SerializeField]float dashcd;
     private float horizontal;
     private float vertical;
     bool facingRight = false;
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask enemyLayerMask;
     bool knockback = false;
+    bool dashasd = true;
     public Vector2 knockbackDirection;
    // HitPoints playerDeath;
 
@@ -48,7 +50,9 @@ public class PlayerController : MonoBehaviour
             anim.SetFloat("Run", Mathf.Abs(horizontal));
             //anim.speed = Mathf.Abs(horizontal);
         }
+        //Hyppyanimaation alkuosan tarkistus/suunta
         anim.SetFloat("Velocity", rb.velocity.y);
+        
         if (IsGrounded())
         {
             anim.SetBool("Jump", false);
@@ -92,8 +96,12 @@ public class PlayerController : MonoBehaviour
 
     public void OnDashInput(bool dashInput)
     {
-        dash = Dash();
-        StartCoroutine(dash);
+        if (!dashing && dashasd)
+        {
+            dash = Dash();
+            StartCoroutine(dash);
+            StartCoroutine(CD());
+        }
     }
 
     private bool IsGrounded() 
@@ -113,11 +121,27 @@ public class PlayerController : MonoBehaviour
     }
     public IEnumerator KnockBack()
     {
-        Debug.Log("testiääääää");
+        Debug.Log("testiï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
         knockback = true;
-        rb.AddForce((rb.position - knockbackDirection )*0.6f, ForceMode2D.Impulse);
+        //this.horizontal = 0;
+        //this.vertical = 0;
+        /*movementSpeed = 0;
+        Debug.Log($"{horizontal},{vertical}");
+        Debug.Log(movementSpeed);*/
+        yield return new WaitForSeconds(0.7f);
+        //Mathf.Clamp(rb.position - knockbackDirection, -1, 1);
+        rb.AddForce((rb.position - knockbackDirection)*0.2f, ForceMode2D.Impulse);
+        //rb.velocity = new Vector2(0.2f, rb.velocity.y);
+        Debug.Log(rb.position - knockbackDirection);
         yield return new WaitForSeconds(0.8f);
         knockback = false;
+    }
+
+    public IEnumerator CD()
+    {
+        dashasd = false;
+        yield return new WaitForSeconds (dashcd);
+        dashasd = true;
     }
 
     public void OnMeleeInput(bool meleeInput)
@@ -128,7 +152,7 @@ public class PlayerController : MonoBehaviour
         if ((melee == true) && !IsGrounded())
         {
             
-            Debug.Log("hyppylyönti");
+            Debug.Log("hyppylyï¿½nti");
             //anim.SetBool("Jump", false);
             anim.SetTrigger("Melee");
             
