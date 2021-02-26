@@ -66,10 +66,10 @@ public class PlayerController : MonoBehaviour
 
     public void OnMoveInput(float horizontal, float vertical)
     {
-        this.horizontal = horizontal;
-        this.vertical = vertical;
         if (!dashing && !knockback)
         {
+            this.horizontal = horizontal;
+            this.vertical = vertical;
             if (horizontal < 0 && !facingRight || horizontal > 0 && facingRight)
             {
                 transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
@@ -123,7 +123,6 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("testi������");
         knockback = true;
-        this.horizontal = 0;
         //this.vertical = 0;
         /*movementSpeed = 0;
         Debug.Log($"{horizontal},{vertical}");
@@ -135,7 +134,7 @@ public class PlayerController : MonoBehaviour
         //rb.AddRelativeForce((rb.position.normalized - knockbackDirection.normalized)*0.2f, ForceMode2D.Impulse);
         rb.velocity = new Vector2(Mathf.Clamp(rb.position.x - knockbackDirection.x, -1, 1) * 5.0f, rb.velocity.y);
         //rb.velocity = new Vector2(0.2f, rb.velocity.y);
-        Debug.Log(rb.position - knockbackDirection);
+        Debug.Log(new Vector2(Mathf.Clamp(rb.position.x - knockbackDirection.x, -1, 1) * 5.0f, rb.velocity.y));
         yield return new WaitForSeconds(0.8f);
         knockback = false;
     }
