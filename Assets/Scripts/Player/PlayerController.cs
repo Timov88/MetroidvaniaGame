@@ -66,6 +66,10 @@ public class PlayerController : MonoBehaviour
 
     public void OnMoveInput(float horizontal, float vertical)
     {
+<<<<<<< Updated upstream
+=======
+       
+>>>>>>> Stashed changes
         if (!dashing && !knockback)
         {
             this.horizontal = horizontal;

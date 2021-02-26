@@ -48,6 +48,7 @@ public class EnemyRun : StateMachineBehaviour
         {
             animator.ResetTrigger("Attack");
             enemy.Attack(false);
+            animator.SetBool("Celebration", true);
         }
     }
 
