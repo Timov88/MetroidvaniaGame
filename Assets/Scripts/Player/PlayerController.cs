@@ -61,26 +61,29 @@ public class PlayerController : MonoBehaviour
         
         //If you change fixed update use Time.deltaTime so your movement speed is not gonna get cucked
         //rb.velocity = new Vector2(horizontal*movementSpeed*(Time.deltaTime*100), rb.velocity.y);   
-        if(this.vertical > 0 && IsClimbing())
+        if(IsClimbing())
         {
+            rb.gravityScale = 0;
             anim.SetBool("Climb", true);
            // rb.velocity = new Vector2 (0, vertical * movementSpeed);
-            rb.transform.position += Vector3.up * movementSpeed * Time.fixedDeltaTime;
+            rb.transform.position += (Vector3.up * Mathf.Round(vertical)) * movementSpeed * Time.fixedDeltaTime;
             //rb.velocity = new Vector2(rb.velocity.x, vertical * movementSpeed);
             
 
         }
-        else if (vertical < 0)
-        {
-            anim.SetBool("Climb", true);
-           // rb.velocity = new Vector2(0, vertical * movementSpeed);
-            rb.transform.position += Vector3.down * movementSpeed * Time.fixedDeltaTime;
-        }
-        if (IsClimbing())
-        {
-            rb.gravityScale = 0;
-        }
-        if(!IsClimbing())
+        //else if (vertical < 0 && IsClimbing())
+        //{
+        //    rb.gravityScale = 0;
+        //    anim.SetBool("Climb", true);
+        //   // rb.velocity = new Vector2(0, vertical * movementSpeed);
+        //    rb.transform.position += Vector3.down * movementSpeed * Time.fixedDeltaTime;
+        //}
+
+        //if (IsClimbing())
+        //{
+        //    rb.gravityScale = 0;
+        //}
+            if (!IsClimbing())
         {
             rb.gravityScale = 1;
             anim.SetBool("Climb", false);
