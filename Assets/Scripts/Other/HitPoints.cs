@@ -79,6 +79,7 @@ public class HitPoints : MonoBehaviour
         Instantiate(playerDeathObject, transform.position, Quaternion.identity);
         //Destroy(this.gameObject);
         this.enabled = false;
+        deathAudio.WitchLaughSound();
         gameObject.SetActive(false);
        // StartCoroutine(DeathWait());
     }

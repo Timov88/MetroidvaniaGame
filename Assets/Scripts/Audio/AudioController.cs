@@ -12,6 +12,7 @@ public class AudioController : MonoBehaviour
     public AudioSource ParrySound;
     public AudioSource DashSound;
     public AudioSource MoveGrassSound;
+    public AudioSource WitchLaugh;
 
     public void PlayJumpSound()
     {
@@ -47,5 +48,8 @@ public class AudioController : MonoBehaviour
       //  Debug.Log("hölöhölö");
         MoveGrassSound.Play();
     }
-
+    public void PlayWitchLaugh()
+    {
+        WitchLaugh.Play();
+    }
 }

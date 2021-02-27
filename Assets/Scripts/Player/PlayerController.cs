@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]float dashSpeed;
     [SerializeField]float dashTime;
     [SerializeField]LayerMask platformLayerMask;
+    [SerializeField]LayerMask LadderLayer;
     [SerializeField]AudioSource jumpAudio;
     [SerializeField]float dashcd;
     private float horizontal;
@@ -59,17 +60,38 @@ public class PlayerController : MonoBehaviour
         }
         
         //If you change fixed update use Time.deltaTime so your movement speed is not gonna get cucked
-        //rb.velocity = new Vector2(horizontal*movementSpeed*(Time.deltaTime*100), rb.velocity.y);        
+        //rb.velocity = new Vector2(horizontal*movementSpeed*(Time.deltaTime*100), rb.velocity.y);   
+        if(this.vertical > 0 && IsClimbing())
+        {
+            anim.SetBool("Climb", true);
+           // rb.velocity = new Vector2 (0, vertical * movementSpeed);
+            rb.transform.position += Vector3.up * movementSpeed * Time.fixedDeltaTime;
+            //rb.velocity = new Vector2(rb.velocity.x, vertical * movementSpeed);
+            
+
+        }
+        else if (vertical < 0)
+        {
+            anim.SetBool("Climb", true);
+           // rb.velocity = new Vector2(0, vertical * movementSpeed);
+            rb.transform.position += Vector3.down * movementSpeed * Time.fixedDeltaTime;
+        }
+        if (IsClimbing())
+        {
+            rb.gravityScale = 0;
+        }
+        if(!IsClimbing())
+        {
+            rb.gravityScale = 1;
+            anim.SetBool("Climb", false);
+        }
     }
 
    
 
     public void OnMoveInput(float horizontal, float vertical)
     {
-<<<<<<< Updated upstream
-=======
-       
->>>>>>> Stashed changes
+
         if (!dashing && !knockback)
         {
             this.horizontal = horizontal;
@@ -107,13 +129,18 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(CD());
         }
     }
+    private bool IsClimbing()
+    {
+        RaycastHit2D hit = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f, Vector2.down, 0.01f, LadderLayer);
+        return hit.collider != null;
 
+    }
     private bool IsGrounded() 
     {
         RaycastHit2D hit = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f, Vector2.down, 0.05f, platformLayerMask);
         return hit.collider != null;
     }
-
+   
     IEnumerator Dash()
     {
         dashing = true;
@@ -185,4 +212,5 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+  
 }

@@ -43,4 +43,9 @@ public class AudioPlayer : MonoBehaviour
        // Debug.Log(audio.gameObject);
         audio.PlayMoveGrassSound();
     }
+    public void WitchLaughSound()
+    {
+        
+        audio.PlayWitchLaugh();
+    }
 }
