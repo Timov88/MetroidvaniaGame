@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     bool knockback = false;
     bool dashasd = true;
     public Vector2 knockbackDirection;
+    float climbSpeed = 0.6f;
    // HitPoints playerDeath;
 
 
@@ -65,25 +66,27 @@ public class PlayerController : MonoBehaviour
         {
             rb.gravityScale = 0;
             anim.SetBool("Climb", true);
+           // rb.velocity = new Vector2 (movementSpeed * Time.fixedDeltaTime, 0);
            // rb.velocity = new Vector2 (0, vertical * movementSpeed);
-            rb.transform.position += (Vector3.up * Mathf.Round(vertical)) * movementSpeed * Time.fixedDeltaTime;
-            //rb.velocity = new Vector2(rb.velocity.x, vertical * movementSpeed);
+            //rb.transform.position += (Vector3.up * Mathf.Round(vertical)) * movementSpeed * Time.fixedDeltaTime;
+            rb.velocity = new Vector2(rb.velocity.x, vertical * movementSpeed * climbSpeed);
             
 
         }
-        //else if (vertical < 0 && IsClimbing())
+        //else if (vertical == 0 && IsClimbing())
         //{
         //    rb.gravityScale = 0;
-        //    anim.SetBool("Climb", true);
-        //   // rb.velocity = new Vector2(0, vertical * movementSpeed);
-        //    rb.transform.position += Vector3.down * movementSpeed * Time.fixedDeltaTime;
+        //anim.SetBool("Climb", true);
+        // rb.velocity = new Vector2 (0, vertical * movementSpeed);
+       // rb.transform.position += (Vector3.up * Mathf.Round(vertical)) * movementSpeed * Time.fixedDeltaTime;
+            //rb.velocity = new Vector2(rb.velocity.x, vertical * movementSpeed);
         //}
 
         //if (IsClimbing())
         //{
         //    rb.gravityScale = 0;
         //}
-            if (!IsClimbing())
+        if (!IsClimbing())
         {
             rb.gravityScale = 1;
             anim.SetBool("Climb", false);
@@ -136,6 +139,7 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f, Vector2.down, 0.01f, LadderLayer);
         return hit.collider != null;
+        
 
     }
     private bool IsGrounded() 

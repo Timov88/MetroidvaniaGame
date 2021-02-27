@@ -477,7 +477,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.01
+  m_Intensity: 2.37
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
@@ -3866,19 +3866,19 @@ CompositeCollider2D:
   - m_Collider: {fileID: 2061865188}
     m_ColliderPaths:
     - - X: -11250000
-        Y: -10000000
+        Y: -9700000
       - X: -11250000
-        Y: 20000000
+        Y: 20300000
       - X: -18750000
-        Y: 20000000
+        Y: 20300000
       - X: -18750000
-        Y: -10000000
+        Y: -9700000
   m_CompositePaths:
     m_Paths:
-    - - {x: -1.1250293, y: -1}
-      - {x: -1.1250293, y: 2}
-      - {x: -1.875, y: 1.9999708}
-      - {x: -1.8749708, y: -1}
+    - - {x: -1.1250293, y: -0.97}
+      - {x: -1.1250293, y: 2.03}
+      - {x: -1.875, y: 2.029971}
+      - {x: -1.8749708, y: -0.97}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &2061865187
@@ -3915,7 +3915,7 @@ TilemapCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 1
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.03}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
 --- !u!1001 &301220489425240209
