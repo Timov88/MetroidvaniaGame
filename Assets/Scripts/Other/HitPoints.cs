@@ -7,6 +7,7 @@ public class HitPoints : MonoBehaviour
     
     Rigidbody2D rb;
     public int hp;
+    public int maxHealth = 100;
     public int armor;
     public bool parry = false;
     public float parryTime;
@@ -17,6 +18,7 @@ public class HitPoints : MonoBehaviour
     AudioPlayer deathAudio;
     public bool playerDeath = false;
     public GameObject playerDeathObject;
+    public HealthBar healthBar;
 
 
     public void OnParryInput(bool parryInput)
@@ -52,6 +54,7 @@ public class HitPoints : MonoBehaviour
         if (playerDeath == false)
         {
             hp -= dmg;
+            healthBar.SetHealth(hp);
             anim.SetBool("Hurt", true);
             if (hp <= 0)
             {
@@ -111,8 +114,8 @@ public class HitPoints : MonoBehaviour
         //enemy = GetComponent<Enemy>();
         anim = GetComponentInChildren<Animator>();
         deathAudio = GetComponentInChildren<AudioPlayer>();
-        
-
+        hp = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
 }
 
 
