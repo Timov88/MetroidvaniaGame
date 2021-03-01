@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     bool dashasd = true;
     public Vector2 knockbackDirection;
     float climbSpeed = 0.6f;
+    public HitPoints hitPoints;
+    bool outofStamina;
    // HitPoints playerDeath;
 
 
@@ -39,7 +41,8 @@ public class PlayerController : MonoBehaviour
             rb = GetComponent<Rigidbody2D>();
             boxCollider2D = GetComponent<BoxCollider2D>();
             anim = GetComponent<Animator>();
-            dashTrail = GetComponent<DashTrail>();    
+            dashTrail = GetComponent<DashTrail>();
+            hitPoints = GetComponent<HitPoints>();
             
     }
 
@@ -50,6 +53,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(horizontal*movementSpeed, rb.velocity.y);
             anim.SetFloat("Run", Mathf.Abs(horizontal));
+            
             //anim.speed = Mathf.Abs(horizontal);
         }
         //Hyppyanimaation alkuosan tarkistus/suunta
@@ -102,6 +106,7 @@ public class PlayerController : MonoBehaviour
         {
             this.horizontal = horizontal;
             this.vertical = vertical;
+
             if (horizontal < 0 && !facingRight || horizontal > 0 && facingRight)
             {
                 transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
@@ -115,20 +120,21 @@ public class PlayerController : MonoBehaviour
 
     public void OnJumpInput(bool jumpInput)
     {
-        if (IsGrounded())
-        {   
-           // Debug.Log("SOITA AUDIO");
+        if (IsGrounded() && !hitPoints.outofStamina)
+        {
+            // Debug.Log("SOITA AUDIO");
             //jumpAudio.Play();//
+            
             rb.AddForce(Vector2.up*jumpSpeed, ForceMode2D.Impulse);
             anim.SetBool("Jump", true);
-            
+            hitPoints.UseStamina(20);
         }
         
     }
 
     public void OnDashInput(bool dashInput)
     {
-        if (!dashing && dashasd)
+        if (!dashing && dashasd && !hitPoints.outofStamina)
         {
             dash = Dash();
             StartCoroutine(dash);
@@ -151,11 +157,14 @@ public class PlayerController : MonoBehaviour
     IEnumerator Dash()
     {
         dashing = true;
+        
         rb.velocity = new Vector2(transform.localScale.x*dashSpeed, rb.velocity.y);
         dashTrail.InvokeRepeating("SpawnTrailPart",0,0.03f);
         yield return new WaitForSeconds(dashTime);
         dashTrail.CancelInvoke("SpawnTrailPart");
+        hitPoints.UseStamina(20);
         dashing = false;
+        
     }
     public IEnumerator KnockBack()
     {
@@ -186,18 +195,22 @@ public class PlayerController : MonoBehaviour
 
     public void OnMeleeInput(bool meleeInput)
     {
-        melee = true;
-        anim.SetTrigger("Melee");
-
-        if ((melee == true) && !IsGrounded())
+        if (!hitPoints.outofStamina)
         {
-            
-            Debug.Log("hyppylyönti");
-            //anim.SetBool("Jump", false);
+            Debug.Log(hitPoints.outofStamina);
+            melee = true;
+            hitPoints.UseStamina(20);
             anim.SetTrigger("Melee");
-            
+
+            if ((melee == true) && !IsGrounded())
+            {
+                hitPoints.UseStamina(5);
+                Debug.Log("hyppylyönti");
+                //anim.SetBool("Jump", false);
+                anim.SetTrigger("Melee");
+
+            }
         }
-        
     }
 
     void OnDrawGizmosSelected()
